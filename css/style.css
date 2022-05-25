@@ -3,7 +3,7 @@ body {
 }
 
 header{
-    background-color: #16317b;
+    background-color: #1a3788;
     padding: 20px 0;
    }
 
@@ -17,7 +17,8 @@ header h1{
     color: white;
     font-size: 30px;
     margin-top: 5px;
-    font-weight: 550;    
+    font-weight: 550;   
+    text-align: center; 
     }
 
 main {
@@ -26,8 +27,8 @@ main {
 }
 
 main section {
-    width: 60%;
-    padding: 100px 40px;
+    width: 80%;
+    padding: 100px 80px;
 }
 
 .secaoForm {

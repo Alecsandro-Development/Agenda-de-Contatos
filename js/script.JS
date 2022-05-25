@@ -1,8 +1,10 @@
 /* Criação do Array para alocação dos registros herdados dos campos */
 const listaContatos = [];
 
-const listaContatosContainer = document.querySelector('.secaolistaContatos__Lista'); /*Atributo responsável por capturar os dados preenchidos pelo usuário, e imprimir em tela*/
+/*Atributo responsável por capturar os dados preenchidos pelo usuário, e imprimir em tela*/
+const listaContatosContainer = document.querySelector('.secaolistaContatos__Lista'); 
 
+/*Constante zerada*/
 let id = 0; 
 
 /*Declaração dos campos do formulário através do ID */
@@ -13,26 +15,25 @@ const campoTelefone = document.getElementById('campoTelefone');
 const botaoAdicionar = document.getElementById('botaoAdicionar');
 
 /* Criação da Função para capturar os valores dos campos, e armazenar na array */
-
 function adicionarNovoContato () {
     const valorNome = campoNome.value;
     const valorEmail = campoEmail.value;
     const valorTelefone = campoTelefone.value; 
-
+  
     const novoContato = {
         id: id,
         nome: valorNome,
         email: valorEmail,
-        telefone: valorTelefone 
+        telefone: valorTelefone, 
     };
         id++;
         listaContatos.push(novoContato); 
 
         renderizarLayout();     
-}
 
-/*Método responsável por salvar os registros ao clicar no botão adicionar*/
-botaoAdicionar.addEventListener('click',adicionarNovoContato);
+    }
+
+/*AQUI*/
 
 function renderizarLayout () {
     listaContatosContainer.innerHTML = '';  /*Limpeza da lista para cadastro de novos contatos, pois estava duplicando */
@@ -50,7 +51,7 @@ function renderizarLayout () {
 }
         renderizarLayout();
 
-/* Metodo 'CreateElement' é utilizado para permitir a criação de elementos HTML dentro do JS */
+/* Metodo para permitir a criação de elementos HTML dentro do JS */
 function criarLayout (contato){
     const li = document.createElement('li');
     const button = document.createElement('button');
@@ -76,7 +77,7 @@ function criarLayout (contato){
     listaContatosContainer.appendChild(li);
 }
 
-/*Função para removar os contatos da lista*/
+/*Função para remover os contatos da lista*/
 function removerContato (evento) {
     const botaoClicado = evento.target; /*Atributo responsável por retornar qual elemento da lista que foi "clicado" */
     const contatoClicado = botaoClicado.parentElement; /*Atributo responsável por retornar o registro PAI do elemento clicado */
@@ -90,8 +91,30 @@ function removerContato (evento) {
 
 }
 
-function validaCampos(){
-    if(campoNome.value == '')
-    alert('Efetue o preechimento do campo nome');
-    campoNome.focus();
+function ValidaCampos(){
+    if(campoNome.value == "") {
+        alert("Por favor, efetue o preenchimento do campo Nome");
+        campoNome.focus();
+        return;
+    }
+
+    if(campoEmail.value == "") {
+        alert("Por favor, efetue o preenchimento do campo E-mail");
+        campoEmail.focus();
+        return;
+    }
+
+    if(campoTelefone.value == "") {
+        alert("Por favor, efetue o preenchimento do campo Telefone");
+        campoTelefone.focus();
+        return;
+    } 
+
+    else {
+        botaoAdicionar.addEventListener('click',adicionarNovoContato);
+        return;
+    } 
+
+  
 }
+
